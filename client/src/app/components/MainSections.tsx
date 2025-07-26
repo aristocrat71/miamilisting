@@ -31,20 +31,20 @@ const FilterPanel: React.FC = () => {
         <h6 style={{ fontWeight: 600, color: '#666', marginBottom: '24px' }}>Filter</h6>
 
         <div className="row" style={{ marginBottom: '10px' }}>
-          {/* Listing Type */}
+          {/* Zipcode */}
           <div className="input-field col s12 m3">
             <select defaultValue="">
-              <option value="" disabled>Select Listing Type</option>
-              <option value="rent">Rentals</option>
-              <option value="sale">Sales</option>
+              <option value="" disabled>Select Zipcode</option>
+              <option value="rent">1234567</option>
+              <option value="sale">234567</option>
             </select>
             <label>Listing Type</label>
           </div>
 
-          {/* City */}
+          {/* District */}
           <div className="input-field col s12 m3">
             <select defaultValue="">
-              <option value="" disabled>Select City</option>
+              <option value="" disabled>Select District</option>
               <option value="all">All</option>
               <option value="miami">Miami</option>
               <option value="dade">Dade</option>
@@ -52,23 +52,22 @@ const FilterPanel: React.FC = () => {
             <label>City</label>
           </div>
 
-          {/* Age Restricted Living */}
+          {/* Housing Type */}
           <div className="input-field col s12 m3">
             <select defaultValue="">
               <option value="" disabled>Select Option</option>
-              <option value="no">No</option>
-              <option value="yes">Yes</option>
+              <option value="no">Public</option>
+              <option value="yes">Private</option>
             </select>
             <label>Age Restricted Living</label>
           </div>
 
-          {/* Pet Policy */}
+          {/* Senior Living */}
           <div className="input-field col s12 m3">
             <select defaultValue="">
-              <option value="" disabled>Select Pet Policy</option>
-              <option value="all">All</option>
-              <option value="allowed">Allowed</option>
-              <option value="not-allowed">Not Allowed</option>
+              <option value="" disabled>Select Option</option>
+              <option value="all">Yes</option>
+              <option value="allowed">No</option>
             </select>
             <label>Pet Policy</label>
           </div>

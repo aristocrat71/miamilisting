@@ -1,0 +1,43 @@
+description: Enforce Next.js + MaterializeCSS UI, strict component structure, and code conventions for Cursor.dev projects
+alwaysApply: true
+---
+
+# Framework & UI Rules
+- Use **Next.js** (App Router) for all routing and page structure (React is the framework base).
+- Use **MaterializeCSS** exclusively for UI styling and components (e.g., `container`, `row`, `col`, `btn`, `card`, `navbar`, `nav-wrapper`, `waves-effect`).
+- Initialize interactive elements with **Materialize's JS** (`M.AutoInit()` in useEffect).
+- **Do NOT** use TailwindCSS or its utility classes.
+- **Do NOT** use external UI libraries like **MUI, Chakra UI, Ant Design**, etc.
+- Keep HTML **semantic and accessible**, wrapping only with MaterializeCSS markup where appropriate.
+
+# File Structure
+- All reusable React components go in `src/components/`
+- All route files (pages/layouts/templates) should follow **Next.js App Router structure** in `src/app/`
+- Static assets (images/icons) should be placed in the `public/` folder and referenced with a leading `/` (e.g., `/logo.png`)
+
+# Component Standards
+- All component filenames and default exports must be in **PascalCase** (e.g., `Header.tsx`, `Footer.tsx`)
+- Each component file must have a **single default export** that matches the file name.
+
+# Styling Guidelines
+- Style only with **MaterializeCSS** classes.
+- Use **inline styles or CSS Modules** only when required for exact positioning or pixel-perfect layouts.
+- Global styles should reside in `src/app/globals.css` and be kept minimal.
+- If custom CSS is necessary, use `[Component].module.css` and place it in the same directory as the component.
+
+# Asset Management
+- Asset filenames must be **lowercase with hyphens** (e.g., `search-icon.png`)
+- Always reference public assets with **absolute paths** (`/logo.png`, not relative).
+
+# Imports
+- Use **absolute imports** with `@` alias for anything under `src/` (e.g., `@/components/Navbar`)
+- Do not use relative paths like `../../../components/...` when avoidable.
+
+# Miscellaneous Conventions
+- All files must be written in **TypeScript** (`.tsx` or `.ts`)
+- Adhere to the project’s **ESLint** configuration and formatting rules.
+- Document any significant design or architecture decisions in `README.md`
+
+# Non-Functional Requirements
+- **Responsive Design**: Mobile, tablet, and desktop compatibility.
+- **Accessibility**: ADA-compliant design practices.

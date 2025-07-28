@@ -6,7 +6,6 @@ import MainSections from "./components/MainSections";
 export default function Home() {
   return (
     <div style={{ marginTop: 24 }}>
-      <Banner />
       <MainSections />
     </div>
   );

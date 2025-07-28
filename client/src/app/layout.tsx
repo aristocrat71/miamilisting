@@ -30,7 +30,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main style={{ paddingTop: 88, minHeight: "100vh", background: "#fff" }}>
-          <div className="container" style={{ maxWidth: 1200, padding: "0 3.5rem" }}>
+          <div className="container" style={{ width:"90vw", maxWidth: "100vw", padding: "0 0.8rem" }}>
             {children}
           </div>
         </main>

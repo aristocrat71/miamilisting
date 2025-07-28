@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import listingsData from '../data/listings.json';
 import { MdViewModule, MdViewList } from 'react-icons/md';
+import { MdLocationOn, MdPhone } from "react-icons/md";
 
 const FilterPanel: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -102,11 +103,33 @@ const FilterPanel: React.FC = () => {
       </div>
 
       {/* View Toggle Button */}
-      <div style={{ maxWidth: '1200px', margin: '30px auto 16px', padding: '0 4px', textAlign: 'right' }}>
-        <button className="btn-flat" onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}>
-          {viewMode === 'grid' ? <MdViewList size={24} /> : <MdViewModule size={24} />}
-        </button>
-      </div>
+<div
+  style={{
+    maxWidth: '1200px',
+    margin: '30px auto 4px',
+    padding: '0 1px',
+    textAlign: 'right',
+  }}
+>
+  <button
+    className="btn-flat"
+    onClick={() => setViewMode('grid')}
+    style={{
+      color: viewMode === 'grid' ? '#1976d2' : 'inherit', padding: '0 6px'
+    }}
+  >
+    <MdViewModule size={24} />
+  </button>
+  <button
+    className="btn-flat"
+    onClick={() => setViewMode('list')}
+    style={{
+      color: viewMode === 'list' ? '#1976d2' : 'inherit', padding: '0 6px'
+    }}
+  >
+    <MdViewList size={24} />
+  </button>
+</div>
 
       {/* Listing Cards */}
       <div
@@ -127,11 +150,11 @@ const FilterPanel: React.FC = () => {
                   <img src={listing.image} alt={listing.project} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ flex: 1, padding: '16px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', color: 'black' }}>
-                  <div>
-                    <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
-                    <p>{listing.address}, {listing.zipcode}</p>
-                    <p>Phone: {listing.phone}</p>
-                  </div>
+                <div>
+  <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
+  <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
+  <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
+</div>
                   <div>
                     <p>District: {listing.district}</p>
                     <p>No. of Units: {listing.units}</p>
@@ -146,15 +169,15 @@ const FilterPanel: React.FC = () => {
                   <img src={listing.image} alt={listing.project} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                 </div>
                 <div className="card-content" style={{ color: 'black' }}>
-                  <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
-                  <p>{listing.address}, {listing.zipcode}</p>
-                  <p>Phone: {listing.phone}</p>
-                  <br />
-                  <p>District: {listing.district}</p>
-                  <p>No. of Units: {listing.units}</p>
-                  <p>Type of Project: {listing.projectType}</p>
-                  <p><strong>Housing Type:</strong> {listing.housingType}</p>
-                </div>
+  <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
+  <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
+  <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
+  <br />
+  <p>District: {listing.district}</p>
+  <p>No. of Units: {listing.units}</p>
+  <p>Type of Project: {listing.projectType}</p>
+  <p><strong>Housing Type:</strong> {listing.housingType}</p>
+</div>
               </>
             )}
           </div>

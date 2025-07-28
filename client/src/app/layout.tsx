@@ -29,8 +29,8 @@ export default function RootLayout({
       </head>
       <body>
         <Header />
-        <main style={{ paddingTop: 88, minHeight: "100vh", background: "#fff" }}>
-          <div className="container" style={{ width:"90vw", maxWidth: "100vw", padding: "0 0.8rem" }}>
+        <main style={{ paddingTop: 80, minHeight: "100vh", background: "#fff" }}>
+          <div className="container" style={{ width:"100vw", maxWidth: "100vw", padding: 0 }}>
             {children}
           </div>
         </main>

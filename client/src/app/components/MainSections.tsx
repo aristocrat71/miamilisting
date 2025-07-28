@@ -55,7 +55,7 @@ const FilterPanel: React.FC = () => {
             {/* Zip Code */}
             <div className="input-field col s12 m3">
               <input type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter Zipcode" />
-              <label className="active">Zipcode</label>
+              <label className="active" style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Zipcode</label>
             </div>
 
             {/* District */}
@@ -66,7 +66,7 @@ const FilterPanel: React.FC = () => {
                   <option key={dist} value={dist}>{dist}</option>
                 ))}
               </select>
-              <label>District</label>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>District</label>
             </div>
 
             {/* Type of Project */}
@@ -79,7 +79,7 @@ const FilterPanel: React.FC = () => {
                 <option value="Homeless">Homeless</option>
                 <option value="Special Needs">Special Needs</option>
               </select>
-              <label>Type of Project</label>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Type of Project</label>
             </div>
 
             {/* Housing Type */}
@@ -89,7 +89,7 @@ const FilterPanel: React.FC = () => {
                 <option value="Public">Public</option>
                 <option value="Private">Private</option>
               </select>
-              <label>Housing Type</label>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Housing Type</label>
             </div>
           </div>
 

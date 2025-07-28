@@ -47,7 +47,7 @@ const FilterPanel: React.FC = () => {
     <>
       {/* Filter Panel */}
       <div className="z-depth-1" style={{ backgroundColor: 'white', borderRadius: '8px', padding: '24px 32px', margin: '30px auto', maxWidth: '1200px' }}>
-        <h6 style={{ fontWeight: 600, color: '#666', marginBottom: '24px' }}>Filter</h6>
+        <h6 style={{ fontWeight: 600, color: '#666', marginBottom: '24px' }}>Search</h6>
 
         <div className="row" style={{ marginBottom: '10px' }}>
           {/* Zip Code */}

@@ -121,7 +121,7 @@ const FilterPanel: React.FC = () => {
       <div
         style={{
           maxWidth: '1200px',
-          margin: '0 auto 40px',
+          margin: '0 auto',
           padding: '0 4px',
           display: 'grid',
           gridTemplateColumns: viewMode === 'grid' ? 'repeat(3, 1fr)' : '1fr',

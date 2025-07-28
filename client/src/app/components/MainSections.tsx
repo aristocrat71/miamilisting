@@ -10,8 +10,8 @@ const FilterPanel: React.FC = () => {
 
   const [zipCode, setZipCode] = useState('');
   const [district, setDistrict] = useState('');
+  const [projectType, setProjectType] = useState('');
   const [housingType, setHousingType] = useState('');
-  const [seniorLivingOnly, setSeniorLivingOnly] = useState('');
 
   useEffect(() => {
     const initMaterialize = async () => {
@@ -27,9 +27,9 @@ const FilterPanel: React.FC = () => {
     const filtered = listingsData.filter((item) => {
       const matchZip = zipCode ? item.zipcode.toString() === zipCode : true;
       const matchDistrict = district ? item.district.toString() === district : true;
+      const matchProject = projectType ? item.projectType.toLowerCase() === projectType.toLowerCase() : true;
       const matchHousing = housingType ? item.housingType.toLowerCase() === housingType.toLowerCase() : true;
-      const matchSenior = seniorLivingOnly === 'yes' ? item.projectType === 'Elderly' : true;
-      return matchZip && matchDistrict && matchHousing && matchSenior;
+      return matchZip && matchDistrict && matchProject && matchHousing;
     });
 
     setFilteredListings(filtered);
@@ -38,80 +38,71 @@ const FilterPanel: React.FC = () => {
   const resetFilters = () => {
     setZipCode('');
     setDistrict('');
+    setProjectType('');
     setHousingType('');
-    setSeniorLivingOnly('');
     setFilteredListings(listingsData);
   };
 
   return (
-    <>
-      {/* Filter Panel */}
-      <div className="z-depth-1" style={{ backgroundColor: 'white', borderRadius: '8px', padding: '24px 32px', margin: '30px auto', maxWidth: '1200px' }}>
-        <h6 style={{ fontWeight: 600, color: '#666', marginBottom: '24px' }}>Search</h6>
+    <div style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>
 
-        <div className="row" style={{ marginBottom: '10px' }}>
-          {/* Zip Code */}
-          <div className="input-field col s12 m3">
-            <input type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter Zipcode" />
-            <label className="active">Zipcode</label>
+      {/* Filter Panel Wrapper with Background Image */}
+      <div style={{ backgroundImage: `url('/skyline.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', padding: '40px 0' }}>
+        <div className="z-depth-1" style={{ backgroundColor: 'white', borderRadius: '8px', padding: '24px 32px', margin: '0 auto', maxWidth: '800px' }}>
+          <h6 style={{ fontWeight: 600, color: '#666', marginBottom: '24px' }}>Search</h6>
+
+          <div className="row" style={{ marginBottom: '10px' }}>
+            {/* Zip Code */}
+            <div className="input-field col s12 m3">
+              <input type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter Zipcode" />
+              <label className="active" style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Zipcode</label>
+            </div>
+
+            {/* District */}
+            <div className="input-field col s12 m3">
+              <select value={district} onChange={(e) => setDistrict(e.target.value)}>
+                <option value="">Select District</option>
+                {[...new Set(listingsData.map((l) => l.district.toString()))].map((dist) => (
+                  <option key={dist} value={dist}>{dist}</option>
+                ))}
+              </select>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>District</label>
+            </div>
+
+            {/* Type of Project */}
+            <div className="input-field col s12 m3">
+              <select value={projectType} onChange={(e) => setProjectType(e.target.value)}>
+                <option value="">Select Option</option>
+                <option value="Family">Family</option>
+                <option value="Elderly">Elderly</option>
+                <option value="Foster Care Facility">Foster Care Facility</option>
+                <option value="Homeless">Homeless</option>
+                <option value="Special Needs">Special Needs</option>
+              </select>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Type of Project</label>
+            </div>
+
+            {/* Housing Type */}
+            <div className="input-field col s12 m3">
+              <select value={housingType} onChange={(e) => setHousingType(e.target.value)}>
+                <option value="">Select Option</option>
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+              </select>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Housing Type</label>
+            </div>
           </div>
 
-          {/* District */}
-          <div className="input-field col s12 m3">
-            <select value={district} onChange={(e) => setDistrict(e.target.value)}>
-              <option value="">Select District</option>
-              {[...new Set(listingsData.map((l) => l.district.toString()))].map((dist) => (
-                <option key={dist} value={dist}>{dist}</option>
-              ))}
-            </select>
-            <label>District</label>
+          {/* Buttons */}
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <button className="btn-flat grey lighten-2 black-text" onClick={resetFilters}>Reset</button>
+            <button className="btn" style={{ backgroundColor: '#28649b', color: '#fff' }} onClick={handleFilter}>Search by Filter</button>
           </div>
-
-          {/* Housing Type */}
-          <div className="input-field col s12 m3">
-            <select value={housingType} onChange={(e) => setHousingType(e.target.value)}>
-              <option value="">Select Option</option>
-              <option value="Public">Public</option>
-              <option value="Private">Private</option>
-            </select>
-            <label>Housing Type</label>
-          </div>
-
-       {/* Senior Living Only */}
-<div style={{ marginBottom: '16px' }}>
-  <label style={{ fontWeight: 600, display: 'block', marginBottom: 8 }}>
-    Senior Living Only
-  </label>
-  <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-    {[
-      { label: 'Yes', value: 'yes' },
-      { label: 'No', value: 'no' },
-    ].map((option) => (
-      <label key={option.value} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-        <input
-          name="seniorLiving"
-          type="radio"
-          value={option.value}
-          checked={seniorLivingOnly === option.value}
-          onChange={() => setSeniorLivingOnly(option.value)}
-        />
-        <span>{option.label}</span>
-      </label>
-    ))}
-  </div>
-</div>
-
-        </div>
-
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button className="btn-flat grey lighten-2 black-text" onClick={resetFilters}>Reset</button>
-          <button className="btn" style={{ backgroundColor: '#28649b', color: '#fff' }} onClick={handleFilter}>Search by Filter</button>
         </div>
       </div>
 
-      {/* View Toggle */}
-      <div style={{ maxWidth: '1200px', margin: '0 auto 16px', padding: '0 4px', textAlign: 'right' }}>
+      {/* View Toggle Button */}
+      <div style={{ maxWidth: '1200px', margin: '30px auto 16px', padding: '0 4px', textAlign: 'right' }}>
         <button className="btn-flat" onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}>
           {viewMode === 'grid' ? <MdViewList size={24} /> : <MdViewModule size={24} />}
         </button>
@@ -169,7 +160,7 @@ const FilterPanel: React.FC = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

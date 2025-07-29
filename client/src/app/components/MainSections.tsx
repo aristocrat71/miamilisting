@@ -14,6 +14,9 @@ const FilterPanel: React.FC = () => {
   const [projectType, setProjectType] = useState('');
   const [housingType, setHousingType] = useState('');
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const listingsPerPage = 12;
+
   useEffect(() => {
     const initMaterialize = async () => {
       if (typeof window !== 'undefined') {
@@ -34,6 +37,7 @@ const FilterPanel: React.FC = () => {
     });
 
     setFilteredListings(filtered);
+    setCurrentPage(1); // Reset to first page on filter
   };
 
   const resetFilters = () => {
@@ -42,12 +46,26 @@ const FilterPanel: React.FC = () => {
     setProjectType('');
     setHousingType('');
     setFilteredListings(listingsData);
-  };
+    setCurrentPage(1);
+  
+    // Visually reset Materialize select dropdowns
+    setTimeout(() => {
+      const M = require('materialize-css');
+      const elems = document.querySelectorAll('select');
+      M.FormSelect.init(elems);
+    }, 0);
+  };  
+
+  const totalPages = Math.ceil(filteredListings.length / listingsPerPage);
+  const currentListings = filteredListings.slice(
+    (currentPage - 1) * listingsPerPage,
+    currentPage * listingsPerPage
+  );
 
   return (
     <div style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>
 
-      {/* Filter Panel Wrapper with Background Image */}
+      {/* Filter Panel */}
       <div style={{ backgroundImage: `url('/skyline.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', padding: '40px 0' }}>
         <div className="z-depth-1" style={{ backgroundColor: 'white', borderRadius: '8px', padding: '24px 32px', margin: '0 auto', maxWidth: '800px' }}>
           <h6 style={{ fontWeight: 600, color: '#666', marginBottom: '24px' }}>Search</h6>
@@ -103,35 +121,41 @@ const FilterPanel: React.FC = () => {
       </div>
 
       {/* View Toggle Button */}
-<div
-  style={{
-    maxWidth: '1200px',
-    margin: '30px auto 4px',
-    padding: '0 1px',
-    textAlign: 'right',
-  }}
->
-  <button
-    className="btn-flat"
-    onClick={() => setViewMode('grid')}
-    style={{
-      color: viewMode === 'grid' ? '#1976d2' : 'inherit', padding: '0 6px'
-    }}
-  >
-    <MdViewModule size={24} />
-  </button>
-  <button
-    className="btn-flat"
-    onClick={() => setViewMode('list')}
-    style={{
-      color: viewMode === 'list' ? '#1976d2' : 'inherit', padding: '0 6px'
-    }}
-  >
-    <MdViewList size={24} />
-  </button>
-</div>
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '30px auto 4px',
+          padding: '0 1px',
+          textAlign: 'right',
+        }}
+      >
+        <button
+          className="btn-flat"
+          onClick={() => {
+            setViewMode('grid');
+            setCurrentPage(1);
+          }}
+          style={{
+            color: viewMode === 'grid' ? '#1976d2' : 'inherit', padding: '0 6px'
+          }}
+        >
+          <MdViewModule size={24} />
+        </button>
+        <button
+          className="btn-flat"
+          onClick={() => {
+            setViewMode('list');
+            setCurrentPage(1);
+          }}
+          style={{
+            color: viewMode === 'list' ? '#1976d2' : 'inherit', padding: '0 6px'
+          }}
+        >
+          <MdViewList size={24} />
+        </button>
+      </div>
 
-      {/* Listing Cards */}
+      {/* Listings */}
       <div
         style={{
           maxWidth: '1200px',
@@ -142,7 +166,7 @@ const FilterPanel: React.FC = () => {
           gap: '24px',
         }}
       >
-        {filteredListings.map((listing) => (
+        {currentListings.map((listing) => (
           <div key={listing.id} className="card z-depth-1" style={{ display: viewMode === 'list' ? 'flex' : 'block', height: viewMode === 'list' ? '200px' : 'auto' }}>
             {viewMode === 'list' ? (
               <>
@@ -150,11 +174,11 @@ const FilterPanel: React.FC = () => {
                   <img src={listing.image} alt={listing.project} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ flex: 1, padding: '16px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', color: 'black' }}>
-                <div>
-  <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
-  <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
-  <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
-</div>
+                  <div>
+                    <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
+                    <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
+                    <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
+                  </div>
                   <div>
                     <p>District: {listing.district}</p>
                     <p>No. of Units: {listing.units}</p>
@@ -169,19 +193,40 @@ const FilterPanel: React.FC = () => {
                   <img src={listing.image} alt={listing.project} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                 </div>
                 <div className="card-content" style={{ color: 'black' }}>
-  <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
-  <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
-  <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
-  <br />
-  <p>District: {listing.district}</p>
-  <p>No. of Units: {listing.units}</p>
-  <p>Type of Project: {listing.projectType}</p>
-  <p><strong>Housing Type:</strong> {listing.housingType}</p>
-</div>
+                  <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
+                  <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
+                  <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
+                  <br />
+                  <p>District: {listing.district}</p>
+                  <p>No. of Units: {listing.units}</p>
+                  <p>Type of Project: {listing.projectType}</p>
+                  <p><strong>Housing Type:</strong> {listing.housingType}</p>
+                </div>
               </>
             )}
           </div>
         ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="center" style={{ margin: '24px 0' }}>
+        <ul className="pagination">
+          <li className={currentPage === 1 ? 'disabled' : 'waves-effect'}>
+            <a href="#!" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}>
+              <i className="material-icons">chevron_left</i>
+            </a>
+          </li>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <li key={i} className={currentPage === i + 1 ? 'active' : 'waves-effect'}>
+              <a href="#!" onClick={() => setCurrentPage(i + 1)}>{i + 1}</a>
+            </li>
+          ))}
+          <li className={currentPage === totalPages ? 'disabled' : 'waves-effect'}>
+            <a href="#!" onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}>
+              <i className="material-icons">chevron_right</i>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   );

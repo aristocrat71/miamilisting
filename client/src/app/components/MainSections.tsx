@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import listingsData from '../data/listings.json';
-import { MdViewModule, MdViewList } from 'react-icons/md';
 import { MdLocationOn, MdPhone } from "react-icons/md";
 
 const FilterPanel: React.FC = () => {
@@ -67,13 +66,12 @@ const FilterPanel: React.FC = () => {
 
       {/* Filter Panel */}
       <div style={{ backgroundImage: `url('/skyline.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', padding: '40px 0' }}>
-        <div className="z-depth-1" style={{ backgroundColor: 'white', borderRadius: '8px', padding: '24px 32px', margin: '0 auto', maxWidth: '800px' }}>
-          <h6 style={{ fontWeight: 600, color: '#666', marginBottom: '24px' }}>Search</h6>
+        <div className="z-depth-1" style={{ backgroundColor: 'white', borderRadius: '8px', padding: '50px 32px', margin: '0 auto', maxWidth: '800px' }}>
 
           <div className="row" style={{ marginBottom: '10px' }}>
             {/* Zip Code */}
             <div className="input-field col s12 m3">
-              <input type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter Zipcode" />
+              <input style = {{color: 'black'}} type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter Zipcode" />
               <label className="active" style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Zipcode</label>
             </div>
 
@@ -103,7 +101,7 @@ const FilterPanel: React.FC = () => {
 
             {/* Housing Type */}
             <div className="input-field col s12 m3">
-              <select value={housingType} onChange={(e) => setHousingType(e.target.value)}>
+              <select value={housingType} onChange={(e) => setHousingType(e.target.value)} style={{ color: 'black' }}>
                 <option value="">Select Option</option>
                 <option value="Public">Public</option>
                 <option value="Private">Private</option>
@@ -127,6 +125,11 @@ const FilterPanel: React.FC = () => {
           margin: '30px auto 4px',
           padding: '0 1px',
           textAlign: 'right',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          gap: '10px',
+          paddingLeft: '20px'
         }}
       >
         <button
@@ -136,10 +139,18 @@ const FilterPanel: React.FC = () => {
             setCurrentPage(1);
           }}
           style={{
-            color: viewMode === 'grid' ? '#1976d2' : 'inherit', padding: '0 6px'
+            padding: '6px',
+            border: viewMode === 'grid' ? '2px solid #1976d2' : '2px solid transparent',
+            borderRadius: '4px',
+            backgroundColor: viewMode === 'grid' ? '#e3f2fd' : 'transparent',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: '44px',
+            minHeight: '44px'
           }}
         >
-          <MdViewModule size={24} />
+          <img src="/grid-new.png" alt="Grid View" style={{ width: 30, height: 30, opacity: viewMode === 'grid' ? 0.8 : 1 }} />
         </button>
         <button
           className="btn-flat"
@@ -148,10 +159,18 @@ const FilterPanel: React.FC = () => {
             setCurrentPage(1);
           }}
           style={{
-            color: viewMode === 'list' ? '#1976d2' : 'inherit', padding: '0 6px'
+            padding: '6px',
+            border: viewMode === 'list' ? '2px solid #1976d2' : '2px solid transparent',
+            borderRadius: '4px',
+            backgroundColor: viewMode === 'list' ? '#e3f2fd' : 'transparent',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: '44px',
+            minHeight: '44px'
           }}
         >
-          <MdViewList size={24} />
+          <img src="/table.png" alt="Table View" style={{ width: 30, height: 30, opacity: viewMode === 'list' ? 0.8 : 1 }} />
         </button>
       </div>
 
@@ -209,7 +228,7 @@ const FilterPanel: React.FC = () => {
       </div>
 
       {/* Pagination */}
-      <div className="center" style={{ margin: '24px 0' }}>
+      <div className="center" style={{ marginTop: '24px', paddingBottom: '24px'}}>
         <ul className="pagination">
           <li className={currentPage === 1 ? 'disabled' : 'waves-effect'}>
             <a href="#!" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}>

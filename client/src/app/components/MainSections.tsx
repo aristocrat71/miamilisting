@@ -101,7 +101,7 @@ const FilterPanel: React.FC = () => {
 
             {/* Housing Type */}
             <div className="input-field col s12 m3">
-              <select value={housingType} onChange={(e) => setHousingType(e.target.value)}>
+              <select value={housingType} onChange={(e) => setHousingType(e.target.value)} style={{ color: 'black' }}>
                 <option value="">Select Option</option>
                 <option value="Public">Public</option>
                 <option value="Private">Private</option>
@@ -228,7 +228,7 @@ const FilterPanel: React.FC = () => {
       </div>
 
       {/* Pagination */}
-      <div className="center" style={{ margin: '24px 0' }}>
+      <div className="center" style={{ marginTop: '24px', paddingBottom: '24px'}}>
         <ul className="pagination">
           <li className={currentPage === 1 ? 'disabled' : 'waves-effect'}>
             <a href="#!" onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}>

@@ -50,6 +50,7 @@ const BackToTop: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            font: 'normal normal normal 14px/1 FontAwesome',
             cursor: 'pointer',
             zIndex: 1000,
             boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
@@ -63,14 +64,15 @@ const BackToTop: React.FC = () => {
           }}
           title="Back to top"
         >
-          <div 
-            className="fa fa-arrow-up fa-2x" 
-            style={{ 
-              color: 'white',
-              fontSize: '20px',
-              lineHeight: '1'
-            }}
-          />
+                     <div 
+             className="fa fa-arrow-up fa-2x" 
+             style={{ 
+               color: 'white',
+               fontSize: '2em',
+               fontWeight: 'bold',
+               lineHeight: '1',
+             }}
+           />
           <span className="sr-only">Back to top</span>
         </div>
       )}

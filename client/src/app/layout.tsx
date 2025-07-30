@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import BackToTop from "@/app/components/BackToTop";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,6 +27,11 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
+        {/* Font Awesome for Back to Top arrow */}
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <Header />
@@ -35,6 +41,7 @@ export default function RootLayout({
           </div>
         </main>
         <Footer />
+        <BackToTop />
         {/* Materialize JS (for dropdowns, etc.) */}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       </body>

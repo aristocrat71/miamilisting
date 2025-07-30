@@ -236,3 +236,8 @@ nav ul a, nav .brand-logo {
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+.pagination .active {
+  background-color: #28649b !important; /* Change to any color you like */
+  color: white !important;
+}

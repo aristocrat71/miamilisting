@@ -87,10 +87,10 @@ const Header = () => {
               }}
             >
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
-              <span style={{ width: "20px", height: "4px", borderRadius: "9px",backgroundColor: "#666", marginBottom:"1px", display: "block" }}></span>
+              <span style={{ width: "20px", height: "4px", borderRadius: "9px",backgroundColor: "#666", marginTop:"15px",marginBottom:"1px", display: "block" }}></span>
               <span style={{ width: "20px", height: "4px", borderRadius: "9px",backgroundColor: "#666", marginBottom:"1px", display: "block" }}></span>
               <span style={{ width: "20px", height: "4px", borderRadius: "9px",backgroundColor: "#666", display: "block" }}></span>
-              <span style={{ fontSize: "12px", color: "#28649b", fontWeight: 500, marginTop: "1px" }}>MENU</span>
+              <span style={{ fontSize: "12px", color: "#28649b", fontWeight: 500 }}>MENU</span>
             </div>
           </button>
           
@@ -127,33 +127,63 @@ const Header = () => {
             </ul>
           </div>
 
-          {/* Search, Login, and Mobile Menu */}
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <a
-              href="#"
-              className="btn-floating waves-effect waves-light"
-              style={{
-                backgroundColor: "#28649b",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <i className="material-icons white-text">search</i>
-            </a>
-            <a
-              href="#"
-              className="black-text"
-              style={{
-                fontWeight: 500,
-                display: "flex",
-                alignItems: "center",
-                fontSize: 16
-              }}
-            >
-              <i className="material-icons left" style={{ fontSize: 21, marginRight: 4 }}>login</i>Login
-            </a>
-          </div>
+                                                                                                                                                                               {/* Search, Login, and Mobile Menu */}
+             {/* Desktop: Search then Login */}
+             <div style={{ display: "flex", alignItems: "center", gap: 20 }} className="hide-on-med-and-down">
+               <a
+                 href="#"
+                 className="btn-floating waves-effect waves-light"
+                 style={{
+                   backgroundColor: "#28649b",
+                   display: "flex",
+                   justifyContent: "center",
+                   alignItems: "center"
+                 }}
+               >
+                 <i className="material-icons white-text">search</i>
+               </a>
+               <a
+                 href="#"
+                 className="black-text"
+                 style={{
+                   fontWeight: 500,
+                   display: "flex",
+                   alignItems: "center",
+                   fontSize: 16
+                 }}
+               >
+                 <i className="material-icons left" style={{ fontSize: 21, marginRight: 4 }}>login</i>Login
+               </a>
+             </div>
+             
+             {/* Mobile: Login then Search (switched order) */}
+             <div style={{ display: "flex", alignItems: "center", gap: 10 }} className="hide-on-large-only">
+               <a
+                 href="#"
+                 className="black-text"
+                 style={{
+                   fontWeight: 500,
+                   display: "flex",
+                   alignItems: "center",
+                   fontSize: 16
+                 }}
+               >
+                 Login
+               </a>
+               <a
+                 href="#"
+                 className="btn-floating waves-effect waves-light"
+                 style={{
+                   backgroundColor: "transparent",
+                   display: "flex",
+                   justifyContent: "center",
+                   alignItems: "center",
+                   boxShadow: "none"
+                 }}
+               >
+                 <img src="/search-mobile.png" alt="Search" style={{ width: 24, height: 24 }} />
+               </a>
+             </div>
         </div>
       </nav>
 

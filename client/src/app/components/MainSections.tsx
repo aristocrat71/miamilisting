@@ -71,7 +71,14 @@ const FilterPanel: React.FC = () => {
           <div className="row" style={{ marginBottom: '10px' }}>
             {/* Zip Code */}
             <div className="input-field col s12 m3">
-              <input style = {{color: 'black'}} type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter Zipcode" />
+              <input style = {{color: 'black'}}
+              type="text" value={zipCode}
+              onChange={(e) => { 
+                if (e.target.value === '' || /^\d+$/.test(e.target.value)) {
+                  setZipCode(e.target.value);
+                }
+                }}
+                placeholder="Enter Zipcode Number" />
               <label className="active" style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Zipcode</label>
             </div>
 
@@ -79,6 +86,7 @@ const FilterPanel: React.FC = () => {
             <div className="input-field col s12 m3">
               <select value={district} onChange={(e) => setDistrict(e.target.value)}>
                 <option value="">Select District</option>
+                <option value="">All</option>
                 {[...new Set(listingsData.map((l) => l.district.toString()))].map((dist) => (
                   <option key={dist} value={dist}>{dist}</option>
                 ))}
@@ -90,6 +98,7 @@ const FilterPanel: React.FC = () => {
             <div className="input-field col s12 m3">
               <select value={projectType} onChange={(e) => setProjectType(e.target.value)}>
                 <option value="">Select Option</option>
+                <option value="">All</option>
                 <option value="Family">Family</option>
                 <option value="Elderly">Elderly</option>
                 <option value="Foster Care Facility">Foster Care Facility</option>
@@ -103,6 +112,7 @@ const FilterPanel: React.FC = () => {
             <div className="input-field col s12 m3">
               <select value={housingType} onChange={(e) => setHousingType(e.target.value)} style={{ color: 'black' }}>
                 <option value="">Select Option</option>
+                <option value="">All</option>
                 <option value="Public">Public</option>
                 <option value="Private">Private</option>
               </select>

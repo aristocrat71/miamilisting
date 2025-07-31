@@ -140,7 +140,7 @@ const FilterPanel: React.FC = () => {
           }}
           style={{
             padding: '6px',
-            border: viewMode === 'grid' ? '2px solid #1976d2' : '2px solid transparent',
+            border: viewMode === 'grid' ? '2px solid #28649b' : '2px solid transparent',
             borderRadius: '4px',
             backgroundColor: viewMode === 'grid' ? '#e3f2fd' : 'transparent',
             display: 'flex',
@@ -160,7 +160,7 @@ const FilterPanel: React.FC = () => {
           }}
           style={{
             padding: '6px',
-            border: viewMode === 'list' ? '2px solid #1976d2' : '2px solid transparent',
+            border: viewMode === 'list' ? '2px solid #28649b' : '2px solid transparent',
             borderRadius: '4px',
             backgroundColor: viewMode === 'list' ? '#e3f2fd' : 'transparent',
             display: 'flex',

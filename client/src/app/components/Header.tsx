@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Header = () => {
   const translateRef = useRef<HTMLAnchorElement>(null);
@@ -7,12 +7,21 @@ const Header = () => {
   const newsRef = useRef<HTMLAnchorElement>(null);
   const governmentRef = useRef<HTMLAnchorElement>(null);
   const employeesRef = useRef<HTMLAnchorElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).M) {
       (window as any).M.AutoInit();
     }
   }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header style={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 1000 }}>
@@ -46,80 +55,214 @@ const Header = () => {
       </div>
       
       <nav className="white z-depth-1" style={{  
-  height: 62,
-  display: "flex",
-  alignItems: "center",
-  padding: "0 115px"
-}}>
-  <div className="nav-wrapper" style={{
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "space-between",
-    flexWrap: "wrap" // Ensures content wraps if screen too small
-  }}>
-    {/* Logo and Navigation Bar */}
-    <div style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 24,
-      minWidth: 0,
-      flex: "1 1 auto",
-      flexWrap: "wrap" // allow wrapping
-    }}>
-      {/* Logo */}
-      <a href="#" className="brand-logo" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-        <img src="/logo.png" alt="Miami Dade County Logo" style={{ height: 40, width: "auto", maxWidth: "100%" }} />
-      </a>
-
-      {/* Navigation Bar */}
-      <ul style={{
+        height: 62,
         display: "flex",
         alignItems: "center",
-        gap: 18,
-        marginLeft: "100px",
-        padding: 0,
-        listStyle: "none",
-        flexWrap: "wrap",
-        flex: "1 1 auto"
+        padding: "0 115px"
       }}>
-        <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Home</a></li>
-        <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>About</a></li>
-        <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Listings</a></li>
-        <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Resources</a></li>
-        <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Contact</a></li>
-      </ul>
-    </div>
-
-    {/* Search and Login */}
-    <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-      <a
-        href="#"
-        className="btn-floating waves-effect waves-light"
-        style={{
-          backgroundColor: "#28649b",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <i className="material-icons white-text">search</i>
-      </a>
-      <a
-        href="#"
-        className="black-text"
-        style={{
-          fontWeight: 500,
+        <div className="nav-wrapper" style={{
           display: "flex",
           alignItems: "center",
-          fontSize: 16
-        }}
-      >
-        <i className="material-icons left" style={{ fontSize: 21, marginRight: 4 }}>login</i>Login
-      </a>
-    </div>
-  </div>
-</nav>
+          width: "100%",
+          justifyContent: "space-between",
+          flexWrap: "wrap"
+        }}>
+          
+          {/* Mobile Menu Button - Only visible on small screens */}
+          <button
+              onClick={toggleMenu}
+              className="btn-flat hide-on-large-only"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "8px",
+                minWidth: "44px",
+                minHeight: "44px",
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                marginLeft: "10px"
+              }}
+            >
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
+              <span style={{ width: "20px", height: "4px", borderRadius: "9px",backgroundColor: "#666", marginBottom:"1px", display: "block" }}></span>
+              <span style={{ width: "20px", height: "4px", borderRadius: "9px",backgroundColor: "#666", marginBottom:"1px", display: "block" }}></span>
+              <span style={{ width: "20px", height: "4px", borderRadius: "9px",backgroundColor: "#666", display: "block" }}></span>
+              <span style={{ fontSize: "12px", color: "#28649b", fontWeight: 500, marginTop: "1px" }}>MENU</span>
+            </div>
+          </button>
+          
+          {/* Logo and Navigation Bar */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 24,
+            minWidth: 0,
+            flex: "1 1 auto",
+            flexWrap: "wrap"
+          }}>
+            {/* Logo */}
+            <a href="#" className="brand-logo" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+              <img src="/logo.png" alt="Miami Dade County Logo" style={{ height: 40, width: "auto", maxWidth: "100%" }} />
+            </a>
+
+            {/* Navigation Bar - Hidden on mobile */}
+            <ul style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 18,
+              marginLeft: "100px",
+              padding: 0,
+              listStyle: "none",
+              flexWrap: "wrap",
+              flex: "1 1 auto"
+            }} className="hide-on-med-and-down">
+              <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Home</a></li>
+              <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>About</a></li>
+              <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Listings</a></li>
+              <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Resources</a></li>
+              <li><a href="#" className="black-text" style={{ fontSize: 15, fontWeight: 600 }}>Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Search, Login, and Mobile Menu */}
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <a
+              href="#"
+              className="btn-floating waves-effect waves-light"
+              style={{
+                backgroundColor: "#28649b",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <i className="material-icons white-text">search</i>
+            </a>
+            <a
+              href="#"
+              className="black-text"
+              style={{
+                fontWeight: 500,
+                display: "flex",
+                alignItems: "center",
+                fontSize: 16
+              }}
+            >
+              <i className="material-icons left" style={{ fontSize: 21, marginRight: 4 }}>login</i>Login
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100vh",
+          backgroundColor: "white",
+          zIndex: 2000,
+          display: "flex",
+          flexDirection: "column"
+        }}>
+          {/* Menu Header */}
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "20px",
+            borderBottom: "1px solid #e0e0e0",
+            backgroundColor: "#f8f9fa"
+          }}>
+            <div style={{ fontSize: "14px", fontWeight: 400, color: "black" }}>
+              Miami-Dade County
+            </div>
+            <button
+              onClick={closeMenu}
+              style={{
+                background: "none",
+                border: "none",
+                fontSize: "24px",
+                cursor: "pointer",
+                color: "#333",
+                padding: "8px"
+              }}
+            >
+              ✕
+            </button>
+          </div>
+
+
+
+          {/* Menu Items */}
+          <div style={{
+            flex: 1,
+            padding: "20px 0"
+          }}>
+            <ul style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0
+            }}>
+              <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                <a href="#" style={{
+                  display: "block",
+                  padding: "16px 20px",
+                  color: "#333",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontWeight: 500
+                }}>Home</a>
+              </li>
+              <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                <a href="#" style={{
+                  display: "block",
+                  padding: "16px 20px",
+                  color: "#333",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontWeight: 500
+                }}>About</a>
+              </li>
+              <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                <a href="#" style={{
+                  display: "block",
+                  padding: "16px 20px",
+                  color: "#333",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontWeight: 500
+                }}>Listings</a>
+              </li>
+              <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                <a href="#" style={{
+                  display: "block",
+                  padding: "16px 20px",
+                  color: "#333",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontWeight: 500
+                }}>Resources</a>
+              </li>
+              <li style={{ borderBottom: "1px solid #e0e0e0" }}>
+                <a href="#" style={{
+                  display: "block",
+                  padding: "16px 20px",
+                  color: "#333",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontWeight: 500
+                }}>Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
 
       {/* Spacer to avoid content hidden behind header */}
       <div style={{ height: 108 }}></div>

@@ -88,18 +88,19 @@ const Footer = () => (
         </div>
       </div>
         {/* Bottom White Bar - Now floating */}
-        <div
-          className="white"
-          style={{
-            borderTop: '1px solid #e0e0e0',
-            padding: '12px 0',
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            width: '100%',
-            zIndex: 1000
-          }}
-        >
+         <div
+           className="white hide-on-med-and-down"
+           style={{
+              borderTop: '1px solid #e0e0e0',
+              padding: '12px 0',
+              position: 'fixed',
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              zIndex: 1000,
+              boxShadow: '0 -4px 12px rgba(0, 0, 0, 0.25)'
+           }}
+         >
           <div className="container">
             <div className="row valign-wrapper" style={{ marginBottom: 0 }}>
               <div className="col s12 m8 l9 valign-wrapper">

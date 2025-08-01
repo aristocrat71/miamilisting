@@ -47,10 +47,19 @@ const Header = () => {
         >
           Translate <i className="material-icons" style={{ fontSize: 18 }}>arrow_drop_down</i>
         </a>
-        <ul id="translate-dropdown" className="dropdown-content">
-          <li><a href="#">Spanish</a></li>
-          <li><a href="#">Creole</a></li>
-          <li><a href="#">Portuguese</a></li>
+        <ul id="translate-dropdown" className="dropdown-content" style={{
+          fontSize: "0.85rem",
+          fontWeight: 500,
+          backgroundColor: "white",
+          border: "1px solid #e0e0e0",
+          borderRadius: "0px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          minWidth: "120px",
+          marginTop: "8px"
+        }}>
+          <li><a href="#" style={{ color: "#28649b", fontSize: "0.85rem", fontWeight: 500, padding: "8px 16px" }}>English</a></li>
+          <li><a href="#" style={{ color: "#28649b", fontSize: "0.85rem", fontWeight: 500, padding: "8px 16px" }}>Spanish</a></li>
+          <li><a href="#" style={{ color: "#28649b", fontSize: "0.85rem", fontWeight: 500, padding: "8px 16px" }}>Haitian Creole</a></li>
         </ul>
       </div>
       
@@ -296,6 +305,32 @@ const Header = () => {
 
       {/* Spacer to avoid content hidden behind header */}
       <div style={{ height: 108 }}></div>
+      
+                           {/* Custom CSS for translate dropdown */}
+        <style jsx>{`
+          #translate-dropdown {
+            background-color: white !important;
+            border: 1px solid #e0e0e0 !important;
+            border-radius: 0px !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            min-width: 120px !important;
+            margin-top: 8px !important;
+            top: 15% !important;
+            transform: none !important;
+          }
+        
+        #translate-dropdown li a {
+          color: #28649b !important;
+          font-size: 0.85rem !important;
+          font-weight: 500 !important;
+          padding: 8px 16px !important;
+        }
+        
+        #translate-dropdown li a:hover {
+          background-color: #f5f5f5 !important;
+          color: #28649b !important;
+        }
+      `}</style>
     </header>
   );
 };

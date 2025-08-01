@@ -128,20 +128,34 @@ const FilterPanel: React.FC = () => {
         </div>
       </div>
 
-      {/* View Toggle Button */}
+      {/* Listings Count and View Toggle */}
       <div
         style={{
           maxWidth: '1200px',
           margin: '30px auto 4px',
           padding: '0 1px',
-          textAlign: 'right',
           display: 'flex',
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          gap: '10px',
-          paddingLeft: '20px'
+          paddingLeft: '20px',
+          paddingRight: '20px'
         }}
       >
+        {/* Listings Count - Left aligned */}
+        <div style={{
+          fontSize: '14px',
+          color: '#666',
+          fontWeight: 400
+        }}>
+          Showing {((currentPage - 1) * listingsPerPage) + 1}-{Math.min(currentPage * listingsPerPage, filteredListings.length)} of {filteredListings.length} listings
+        </div>
+        
+        {/* View Toggle Buttons - Right aligned */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px'
+        }}>
         <button
           className="btn-flat"
           onClick={() => {
@@ -182,6 +196,7 @@ const FilterPanel: React.FC = () => {
         >
           <img src="/table.png" alt="Table View" style={{ width: 30, height: 30, opacity: viewMode === 'list' ? 0.8 : 1 }} />
         </button>
+        </div>
       </div>
 
       {/* Listings */}

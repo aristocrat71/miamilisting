@@ -9,9 +9,9 @@ const FilterPanel: React.FC = () => {
   const [filteredListings, setFilteredListings] = useState(listingsData);
 
   const [zipCode, setZipCode] = useState('');
-  const [district, setDistrict] = useState('');
-  const [projectType, setProjectType] = useState('');
-  const [housingType, setHousingType] = useState('');
+  const [district, setDistrict] = useState('all');
+  const [projectType, setProjectType] = useState('all');
+  const [housingType, setHousingType] = useState('all');
 
   const [currentPage, setCurrentPage] = useState(1);
   const listingsPerPage = 12;
@@ -29,9 +29,9 @@ const FilterPanel: React.FC = () => {
   const handleFilter = () => {
     const filtered = listingsData.filter((item) => {
       const matchZip = zipCode ? item.zipcode.toString() === zipCode : true;
-      const matchDistrict = district ? item.district.toString() === district : true;
-      const matchProject = projectType ? item.projectType.toLowerCase() === projectType.toLowerCase() : true;
-      const matchHousing = housingType ? item.housingType.toLowerCase() === housingType.toLowerCase() : true;
+      const matchDistrict = district && district !== 'all' ? item.district.toString() === district : true;
+      const matchProject = projectType && projectType !== 'all' ? item.projectType.toLowerCase() === projectType.toLowerCase() : true;
+      const matchHousing = housingType && housingType !== 'all' ? item.housingType.toLowerCase() === housingType.toLowerCase() : true;
       return matchZip && matchDistrict && matchProject && matchHousing;
     });
 
@@ -41,9 +41,9 @@ const FilterPanel: React.FC = () => {
 
   const resetFilters = () => {
     setZipCode('');
-    setDistrict('');
-    setProjectType('');
-    setHousingType('');
+    setDistrict('all');
+    setProjectType('all');
+    setHousingType('all');
     setFilteredListings(listingsData);
     setCurrentPage(1);
   
@@ -86,7 +86,7 @@ const FilterPanel: React.FC = () => {
             <div className="input-field col s12 m3">
               <select value={district} onChange={(e) => setDistrict(e.target.value)}>
                 <option value="">Select District</option>
-                <option value="">All</option>
+                <option value="all">All</option>
                 {[...new Set(listingsData.map((l) => l.district.toString()))].map((dist) => (
                   <option key={dist} value={dist}>{dist}</option>
                 ))}
@@ -98,7 +98,7 @@ const FilterPanel: React.FC = () => {
             <div className="input-field col s12 m3">
               <select value={projectType} onChange={(e) => setProjectType(e.target.value)}>
                 <option value="">Select Option</option>
-                <option value="">All</option>
+                <option value="all">All</option>
                 <option value="Family">Family</option>
                 <option value="Elderly">Elderly</option>
                 <option value="Foster Care Facility">Foster Care Facility</option>
@@ -112,7 +112,7 @@ const FilterPanel: React.FC = () => {
             <div className="input-field col s12 m3">
               <select value={housingType} onChange={(e) => setHousingType(e.target.value)} style={{ color: 'black' }}>
                 <option value="">Select Option</option>
-                <option value="">All</option>
+                <option value="all">All</option>
                 <option value="Public">Public</option>
                 <option value="Private">Private</option>
               </select>
@@ -128,20 +128,34 @@ const FilterPanel: React.FC = () => {
         </div>
       </div>
 
-      {/* View Toggle Button */}
+      {/* Listings Count and View Toggle */}
       <div
         style={{
           maxWidth: '1200px',
           margin: '30px auto 4px',
           padding: '0 1px',
-          textAlign: 'right',
           display: 'flex',
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          gap: '10px',
-          paddingLeft: '20px'
+          paddingLeft: '20px',
+          paddingRight: '20px'
         }}
       >
+        {/* Listings Count - Left aligned */}
+        <div style={{
+          fontSize: '14px',
+          color: '#666',
+          fontWeight: 400
+        }}>
+          Showing {((currentPage - 1) * listingsPerPage) + 1}-{Math.min(currentPage * listingsPerPage, filteredListings.length)} of {filteredListings.length} listings
+        </div>
+        
+        {/* View Toggle Buttons - Right aligned */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px'
+        }}>
         <button
           className="btn-flat"
           onClick={() => {
@@ -182,6 +196,7 @@ const FilterPanel: React.FC = () => {
         >
           <img src="/table.png" alt="Table View" style={{ width: 30, height: 30, opacity: viewMode === 'list' ? 0.8 : 1 }} />
         </button>
+        </div>
       </div>
 
       {/* Listings */}

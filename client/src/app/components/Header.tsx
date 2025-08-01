@@ -35,9 +35,9 @@ const Header = () => {
         padding: "0 115px",
         fontSize: "0.85rem"
       }}>
-        <a href="#" className="white-text" style={{ marginLeft: 24, fontWeight: 500 }}>311</a>
-        <a href="#" className="white-text" style={{ marginLeft: 24, fontWeight: 500 }}>GovMeetings</a>
-        <a href="#" className="white-text" style={{ marginLeft: 24, fontWeight: 500 }}>Calendar</a>
+        <a href="#" className="white-text-bold" style={{ marginLeft: 24, fontWeight: 500, color: "#fff"}}>311</a>
+        <a href="#" className="white-text-bold" style={{ marginLeft: 24, fontWeight: 500, color: "#fff"}}>GovMeetings</a>
+        <a href="#" className="white-text-bold" style={{ marginLeft: 24, fontWeight: 500, color: "#fff"}}>Calendar</a>
         <a
           ref={translateRef}
           className="dropdown-trigger white-text"
@@ -47,10 +47,19 @@ const Header = () => {
         >
           Translate <i className="material-icons" style={{ fontSize: 18 }}>arrow_drop_down</i>
         </a>
-        <ul id="translate-dropdown" className="dropdown-content">
-          <li><a href="#">Spanish</a></li>
-          <li><a href="#">Creole</a></li>
-          <li><a href="#">Portuguese</a></li>
+        <ul id="translate-dropdown" className="dropdown-content" style={{
+          fontSize: "0.85rem",
+          fontWeight: 500,
+          backgroundColor: "white",
+          border: "1px solid #e0e0e0",
+          borderRadius: "0px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          minWidth: "120px",
+          marginTop: "8px"
+        }}>
+          <li><a href="#" style={{ color: "#28649b", fontSize: "0.85rem", fontWeight: 500, padding: "8px 16px" }}>English</a></li>
+          <li><a href="#" style={{ color: "#28649b", fontSize: "0.85rem", fontWeight: 500, padding: "8px 16px" }}>Spanish</a></li>
+          <li><a href="#" style={{ color: "#28649b", fontSize: "0.85rem", fontWeight: 500, padding: "8px 16px" }}>Haitian Creole</a></li>
         </ul>
       </div>
       
@@ -127,7 +136,7 @@ const Header = () => {
             </ul>
           </div>
 
-                                                                                                                                                                               {/* Search, Login, and Mobile Menu */}
+                                                                                                                                                                                      {/* Search, Login, and Mobile Menu */}
              {/* Desktop: Search then Login */}
              <div style={{ display: "flex", alignItems: "center", gap: 20 }} className="hide-on-med-and-down">
                <a
@@ -146,13 +155,13 @@ const Header = () => {
                  href="#"
                  className="black-text"
                  style={{
-                   fontWeight: 500,
+                   fontWeight: 400,
                    display: "flex",
                    alignItems: "center",
                    fontSize: 16
                  }}
                >
-                 <i className="material-icons left" style={{ fontSize: 21, marginRight: 4 }}>login</i>Login
+                 <i className="fa fa-sign-in" style={{ fontSize: 15, marginRight: 4 }}></i>Login
                </a>
              </div>
              
@@ -162,10 +171,9 @@ const Header = () => {
                  href="#"
                  className="black-text"
                  style={{
-                   fontWeight: 500,
                    display: "flex",
                    alignItems: "center",
-                   fontSize: 16
+                   fontSize: 12
                  }}
                >
                  Login
@@ -296,6 +304,34 @@ const Header = () => {
 
       {/* Spacer to avoid content hidden behind header */}
       <div style={{ height: 108 }}></div>
+      
+                           {/* Custom CSS for translate dropdown */}
+        <style jsx>{`
+          #translate-dropdown {
+            background-color: white !important;
+            border: 1px solid #e0e0e0 !important;
+            border-radius: 0px !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            min-width: 120px !important;
+            margin-top: 8px !important;
+            top: 15% !important;
+            transform: none !important;
+          }
+        
+        #translate-dropdown li a {
+          color: #027abb !important;
+          font-size: 0.85rem !important;
+          font-weight: 400 !important;
+          padding: 8px 16px !important;
+          padding-bottom: 2px !important;
+        }
+        
+        #translate-dropdown li a:hover {
+          background-color: #f5f5f5 !important;
+          color: #28649b !important;
+          text-decoration: underline !important;
+        }
+      `}</style>
     </header>
   );
 };

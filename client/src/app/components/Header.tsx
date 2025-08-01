@@ -35,9 +35,9 @@ const Header = () => {
         padding: "0 115px",
         fontSize: "0.85rem"
       }}>
-        <a href="#" className="white-text" style={{ marginLeft: 24, fontWeight: 500 }}>311</a>
-        <a href="#" className="white-text" style={{ marginLeft: 24, fontWeight: 500 }}>GovMeetings</a>
-        <a href="#" className="white-text" style={{ marginLeft: 24, fontWeight: 500 }}>Calendar</a>
+        <a href="#" className="white-text-bold" style={{ marginLeft: 24, fontWeight: 500, color: "#fff"}}>311</a>
+        <a href="#" className="white-text-bold" style={{ marginLeft: 24, fontWeight: 500, color: "#fff"}}>GovMeetings</a>
+        <a href="#" className="white-text-bold" style={{ marginLeft: 24, fontWeight: 500, color: "#fff"}}>Calendar</a>
         <a
           ref={translateRef}
           className="dropdown-trigger white-text"

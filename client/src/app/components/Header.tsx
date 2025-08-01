@@ -136,7 +136,7 @@ const Header = () => {
             </ul>
           </div>
 
-                                                                                                                                                                               {/* Search, Login, and Mobile Menu */}
+                                                                                                                                                                                      {/* Search, Login, and Mobile Menu */}
              {/* Desktop: Search then Login */}
              <div style={{ display: "flex", alignItems: "center", gap: 20 }} className="hide-on-med-and-down">
                <a
@@ -155,13 +155,13 @@ const Header = () => {
                  href="#"
                  className="black-text"
                  style={{
-                   fontWeight: 500,
+                   fontWeight: 400,
                    display: "flex",
                    alignItems: "center",
                    fontSize: 16
                  }}
                >
-                 <i className="material-icons left" style={{ fontSize: 21, marginRight: 4 }}>login</i>Login
+                 <i className="fa fa-sign-in" style={{ fontSize: 15, marginRight: 4 }}></i>Login
                </a>
              </div>
              
@@ -171,10 +171,9 @@ const Header = () => {
                  href="#"
                  className="black-text"
                  style={{
-                   fontWeight: 500,
                    display: "flex",
                    alignItems: "center",
-                   fontSize: 16
+                   fontSize: 12
                  }}
                >
                  Login
@@ -320,15 +319,17 @@ const Header = () => {
           }
         
         #translate-dropdown li a {
-          color: #28649b !important;
+          color: #027abb !important;
           font-size: 0.85rem !important;
-          font-weight: 500 !important;
+          font-weight: 400 !important;
           padding: 8px 16px !important;
+          padding-bottom: 2px !important;
         }
         
         #translate-dropdown li a:hover {
           background-color: #f5f5f5 !important;
           color: #28649b !important;
+          text-decoration: underline !important;
         }
       `}</style>
     </header>

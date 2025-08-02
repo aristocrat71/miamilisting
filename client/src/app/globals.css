@@ -9,6 +9,19 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+
+.input-field select {
+    color: black !important;
+  }
+  
+  .input-field .select-dropdown {
+    color: black !important;
+  }
+
+  .dropdown-content li > a, 
+  .dropdown-content li > span {
+    color: black !important;
+  }
 }
 
 html,
@@ -242,3 +255,4 @@ nav ul a, nav .brand-logo {
   background-color: #28649b !important; /* Change to any color you like */
   color: white !important;
 }
+

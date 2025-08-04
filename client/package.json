@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "google-translate-api-x": "^10.7.2",
     "materialize-css": "^1.0.0-rc.2",
     "next": "15.4.3",
     "react": "19.1.0",

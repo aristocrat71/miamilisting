@@ -3,10 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import listingsData from '../data/listings.json';
 import { MdLocationOn, MdPhone } from "react-icons/md";
+import { useTranslation } from '../contexts/TranslationContext';
 
 const FilterPanel: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [filteredListings, setFilteredListings] = useState(listingsData);
+  const { translateText } = useTranslation();
+  const [translatedContent, setTranslatedContent] = useState<Record<string, string>>({});
 
   const [zipCode, setZipCode] = useState('');
   const [district, setDistrict] = useState('all');
@@ -25,6 +28,26 @@ const FilterPanel: React.FC = () => {
     };
     initMaterialize();
   }, []);
+
+  // Translate content when component mounts
+  useEffect(() => {
+    const translateContent = async () => {
+      const textsToTranslate = [
+        'Zipcode', 'District', 'Type of Project', 'Housing Type', 'Reset', 'Search by Filter',
+        'Showing', 'of', 'listings', 'Enter Zipcode Number', 'Select District', 'Select Option',
+        'All', 'Family', 'Elderly', 'Foster Care Facility', 'Homeless', 'Special Needs',
+        'Public', 'Private', 'No. of Units', 'Type of Project:', 'Housing Type:'
+      ];
+
+      const translations: Record<string, string> = {};
+      for (const text of textsToTranslate) {
+        translations[text] = await translateText(text);
+      }
+      setTranslatedContent(translations);
+    };
+
+    translateContent();
+  }, [translateText]);
 
   const handleFilter = () => {
     const filtered = listingsData.filter((item) => {
@@ -78,52 +101,64 @@ const FilterPanel: React.FC = () => {
                   setZipCode(e.target.value);
                 }
                 }}
-                placeholder="Enter Zipcode Number" />
-              <label className="active" style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Zipcode</label>
+                placeholder={translatedContent['Enter Zipcode Number'] || 'Enter Zipcode Number'} />
+              <label className="active" style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>
+                {translatedContent['Zipcode'] || 'Zipcode'}
+              </label>
             </div>
 
             {/* District */}
             <div className="input-field col s12 m3">
               <select value={district} onChange={(e) => setDistrict(e.target.value)}>
-                <option value="">Select District</option>
-                <option value="all">All</option>
+                <option value="">{translatedContent['Select District'] || 'Select District'}</option>
+                <option value="all">{translatedContent['All'] || 'All'}</option>
                 {[...new Set(listingsData.map((l) => l.district.toString()))].map((dist) => (
                   <option key={dist} value={dist}>{dist}</option>
                 ))}
               </select>
-              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>District</label>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>
+                {translatedContent['District'] || 'District'}
+              </label>
             </div>
 
             {/* Type of Project */}
             <div className="input-field col s12 m3">
               <select value={projectType} onChange={(e) => setProjectType(e.target.value)}>
-                <option value="">Select Option</option>
-                <option value="all">All</option>
-                <option value="Family">Family</option>
-                <option value="Elderly">Elderly</option>
-                <option value="Foster Care Facility">Foster Care Facility</option>
-                <option value="Homeless">Homeless</option>
-                <option value="Special Needs">Special Needs</option>
+                <option value="">{translatedContent['Select Option'] || 'Select Option'}</option>
+                <option value="all">{translatedContent['All'] || 'All'}</option>
+                <option value="Family">{translatedContent['Family'] || 'Family'}</option>
+                <option value="Elderly">{translatedContent['Elderly'] || 'Elderly'}</option>
+                <option value="Foster Care Facility">{translatedContent['Foster Care Facility'] || 'Foster Care Facility'}</option>
+                <option value="Homeless">{translatedContent['Homeless'] || 'Homeless'}</option>
+                <option value="Special Needs">{translatedContent['Special Needs'] || 'Special Needs'}</option>
               </select>
-              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Type of Project</label>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>
+                {translatedContent['Type of Project'] || 'Type of Project'}
+              </label>
             </div>
 
             {/* Housing Type */}
             <div className="input-field col s12 m3">
               <select value={housingType} onChange={(e) => setHousingType(e.target.value)} style={{ color: 'black' }}>
-                <option value="">Select Option</option>
-                <option value="all">All</option>
-                <option value="Public">Public</option>
-                <option value="Private">Private</option>
+                <option value="">{translatedContent['Select Option'] || 'Select Option'}</option>
+                <option value="all">{translatedContent['All'] || 'All'}</option>
+                <option value="Public">{translatedContent['Public'] || 'Public'}</option>
+                <option value="Private">{translatedContent['Private'] || 'Private'}</option>
               </select>
-              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>Housing Type</label>
+              <label style={{ fontFamily: `'Segoe UI', 'SegoeUI', sans-serif`, color: 'black' }}>
+                {translatedContent['Housing Type'] || 'Housing Type'}
+              </label>
             </div>
           </div>
 
           {/* Buttons */}
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button className="btn-flat grey lighten-2 black-text" onClick={resetFilters}>Reset</button>
-            <button className="btn" style={{ backgroundColor: '#28649b', color: '#fff' }} onClick={handleFilter}>Search by Filter</button>
+            <button className="btn-flat grey lighten-2 black-text" onClick={resetFilters}>
+              {translatedContent['Reset'] || 'Reset'}
+            </button>
+            <button className="btn" style={{ backgroundColor: '#28649b', color: '#fff' }} onClick={handleFilter}>
+              {translatedContent['Search by Filter'] || 'Search by Filter'}
+            </button>
           </div>
         </div>
       </div>
@@ -147,7 +182,7 @@ const FilterPanel: React.FC = () => {
           color: '#666',
           fontWeight: 400
         }}>
-          Showing {((currentPage - 1) * listingsPerPage) + 1}-{Math.min(currentPage * listingsPerPage, filteredListings.length)} of {filteredListings.length} listings
+          {translatedContent['Showing'] || 'Showing'} {((currentPage - 1) * listingsPerPage) + 1}-{Math.min(currentPage * listingsPerPage, filteredListings.length)} {translatedContent['of'] || 'of'} {filteredListings.length} {translatedContent['listings'] || 'listings'}
         </div>
         
         {/* View Toggle Buttons - Right aligned */}
@@ -225,9 +260,9 @@ const FilterPanel: React.FC = () => {
                   </div>
                   <div>
                     <p>District: {listing.district}</p>
-                    <p>No. of Units: {listing.units}</p>
-                    <p>Type of Project: {listing.projectType}</p>
-                    <p><strong>Housing Type:</strong> {listing.housingType}</p>
+                    <p>{translatedContent['No. of Units'] || 'No. of Units'}: {listing.units}</p>
+                    <p>{translatedContent['Type of Project:'] || 'Type of Project:'} {listing.projectType}</p>
+                    <p><strong>{translatedContent['Housing Type:'] || 'Housing Type:'}</strong> {listing.housingType}</p>
                   </div>
                 </div>
               </>
@@ -242,9 +277,9 @@ const FilterPanel: React.FC = () => {
                   <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
                   <br />
                   <p>District: {listing.district}</p>
-                  <p>No. of Units: {listing.units}</p>
-                  <p>Type of Project: {listing.projectType}</p>
-                  <p><strong>Housing Type:</strong> {listing.housingType}</p>
+                  <p>{translatedContent['No. of Units'] || 'No. of Units'}: {listing.units}</p>
+                  <p>{translatedContent['Type of Project:'] || 'Type of Project:'} {listing.projectType}</p>
+                  <p><strong>{translatedContent['Housing Type:'] || 'Housing Type:'}</strong> {listing.housingType}</p>
                 </div>
               </>
             )}

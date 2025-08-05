@@ -9,7 +9,7 @@
     "menu": "MENI"
   },
   "language": {
-    "translate": "Tradwi",
+    "translate": "Tradui",
     "english": "Angle",
     "spanish": "Panyòl",
     "haitian_creole": "Kreyòl Ayisyen"
@@ -52,24 +52,24 @@
   "footer": {
     "help_and_support": "Èd ak Sipò",
     "miami_dade_home": "Kay Miami-Dade",
-    "privacy_statement": "Deklarasyon Konfidansyalite",
+    "privacy_statement": "Deklarasyon sou Konfidansyalite",
     "ada_notice": "Avi ADA",
-    "disclaimer": "Degajman Responsabilite",
-    "about_miami_dade": "Sou Miami-Dade",
-    "self_service": "Otosèvis",
+    "disclaimer": "Avetìsman",
+    "about_miami_dade": "Konsènan Miami-Dade",
+    "self_service": "Sèvis pwòp tèt ou",
     "311_contact_center": "Sant Kontak 311",
-    "mobile_applications": "Aplikasyon Mobil",
+    "mobile_applications": "Aplikasyon mobil yo",
     "open_data": "Done Ouvè",
-    "public_records": "Dokiman Piblik",
+    "public_records": "Dosye Piblik yo",
     "service_directory": "Anyè Sèvis",
     "stay_connected": "Rete Konekte",
-    "legal_ads_notices": "Anonse Legal ak Avi Piblik",
-    "social_media_directory": "Anyè Rezo Sosyal",
-    "watch_government_meetings": "Gade Reyinyon Gouvènman",
-    "county_calendar": "Kalandriye Konte",
-    "news_rss_feed": "Feed RSS Nouvèl",
-    "email_disclaimer": "Dapre lwa Florid la, adrès imel yo se dokiman piblik yo ye. Si ou pa vle adrès imel ou an divòlge nan repons nan yon demann dokiman piblik, pa voye imèl bay enstitisyon an. Okontrè, kontakte biwo sa a nan telefòn oswa nan ekri.",
-    "all_rights_reserved": "Tout dwa yo rezève.",
+    "legal_ads_notices": "Anons Legal ak Avi Piblik",
+    "social_media_directory": "Anyè Medya Sosyal",
+    "watch_government_meetings": "Gade Reyinyon Gouvènman yo",
+    "county_calendar": "Kalandriye Konte a",
+    "news_rss_feed": "Fil RSS Nouvèl",
+    "email_disclaimer": "Dapre lalwa Florid, adrès imel yo se dosye piblik. Si ou pa vle yo divòlge adrès imel ou a an repons a yon demann dosye piblik, pa voye imel bay antite sa a. Olye de sa, kontakte biwo sa a pa telefòn oswa pa ekri.",
+    "all_rights_reserved": "Tout dwa rezève.",
     "feedback": "Kòmantè"
   }
 }

@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import BackToTop from "@/app/components/BackToTop";
+import { TranslationProvider } from "@/app/contexts/TranslationContext";
 
 export const metadata: Metadata = {
   title: "Miami-Dade County",
@@ -38,14 +39,16 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Header />
-        <main style={{ paddingTop: 80, minHeight: "100vh", background: "#fff" }}>
-          <div className="container" style={{ width:"100vw", maxWidth: "100vw", padding: 0 }}>
-            {children}
-          </div>
-        </main>
-        <Footer />
-        <BackToTop />
+        <TranslationProvider>
+          <Header />
+          <main style={{ paddingTop: 80, minHeight: "100vh", background: "#fff" }}>
+            <div className="container" style={{ width:"100vw", maxWidth: "100vw", padding: 0 }}>
+              {children}
+            </div>
+          </main>
+          <Footer />
+          <BackToTop />
+        </TranslationProvider>
         {/* Materialize JS (for dropdowns, etc.) */}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       </body>

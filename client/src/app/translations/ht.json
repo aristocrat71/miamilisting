@@ -1,0 +1,75 @@
+{
+  "navigation": {
+    "home": "Kay",
+    "about": "Sou",
+    "listings": "Lis", 
+    "resources": "Resous",
+    "contact": "Kontak",
+    "login": "Konekte",
+    "menu": "MENI"
+  },
+  "language": {
+    "translate": "Tradui",
+    "english": "Angle",
+    "spanish": "Panyòl",
+    "haitian_creole": "Kreyòl Ayisyen"
+  },
+  "header": {
+    "miami_dade_county": "Konte Miami-Dade",
+    "311": "311",
+    "gov_meetings": "Reyinyon Gouvènman",
+    "calendar": "Kalandriye"
+  },
+  "filters": {
+    "zipcode": "Kòd Postal",
+    "district": "Distri",
+    "type_of_project": "Kalite Pwojè",
+    "housing_type": "Kalite Loje",
+    "reset": "Reyajiste",
+    "search_by_filter": "Chèche pa Filtè",
+    "enter_zipcode": "Antre Nimewo Kòd Postal",
+    "select_district": "Chwazi Distri",
+    "select_option": "Chwazi Opsyon"
+  },
+  "listings": {
+    "showing": "Montre",
+    "of": "nan",
+    "listings": "lis",
+    "no_of_units": "Nimewo Inite",
+    "type_of_project_label": "Kalite Pwojè:",
+    "housing_type_label": "Kalite Loje:"
+  },
+  "options": {
+    "all": "Tout",
+    "family": "Famni",
+    "elderly": "Granmoun",
+    "foster_care_facility": "Enstitisyon Swen Tempora",
+    "homeless": "San Kay",
+    "special_needs": "Beso Espesyal",
+    "public": "Piblik",
+    "private": "Prive"
+  },
+  "footer": {
+    "help_and_support": "Èd ak Sipò",
+    "miami_dade_home": "Kay Miami-Dade",
+    "privacy_statement": "Deklarasyon sou Konfidansyalite",
+    "ada_notice": "Avi ADA",
+    "disclaimer": "Avetìsman",
+    "about_miami_dade": "Konsènan Miami-Dade",
+    "self_service": "Sèvis pwòp tèt ou",
+    "311_contact_center": "Sant Kontak 311",
+    "mobile_applications": "Aplikasyon mobil yo",
+    "open_data": "Done Ouvè",
+    "public_records": "Dosye Piblik yo",
+    "service_directory": "Anyè Sèvis",
+    "stay_connected": "Rete Konekte",
+    "legal_ads_notices": "Anons Legal ak Avi Piblik",
+    "social_media_directory": "Anyè Medya Sosyal",
+    "watch_government_meetings": "Gade Reyinyon Gouvènman yo",
+    "county_calendar": "Kalandriye Konte a",
+    "news_rss_feed": "Fil RSS Nouvèl",
+    "email_disclaimer": "Dapre lalwa Florid, adrès imel yo se dosye piblik. Si ou pa vle yo divòlge adrès imel ou a an repons a yon demann dosye piblik, pa voye imel bay antite sa a. Olye de sa, kontakte biwo sa a pa telefòn oswa pa ekri.",
+    "all_rights_reserved": "Tout dwa rezève.",
+    "feedback": "Kòmantè"
+  }
+}

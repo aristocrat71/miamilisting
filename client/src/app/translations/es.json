@@ -1,0 +1,75 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "listings": "Listados", 
+    "resources": "Recursos",
+    "contact": "Contacto",
+    "login": "Acceso",
+    "menu": "MENÚ"
+  },
+  "language": {
+    "translate": "Traducir",
+    "english": "Inglés",
+    "spanish": "Español",
+    "haitian_creole": "Criollo Haitiano"
+  },
+  "header": {
+    "miami_dade_county": "Condado de Miami-Dade",
+    "311": "311",
+    "gov_meetings": "Reuniones del Gobierno",
+    "calendar": "Calendario"
+  },
+  "filters": {
+    "zipcode": "Código Postal",
+    "district": "Distrito",
+    "type_of_project": "Tipo de Proyecto",
+    "housing_type": "Tipo de Vivienda",
+    "reset": "Restablecer",
+    "search_by_filter": "Buscar por Filtro",
+    "enter_zipcode": "Ingrese Número de Código Postal",
+    "select_district": "Seleccionar Distrito",
+    "select_option": "Seleccionar Opción"
+  },
+  "listings": {
+    "showing": "Mostrando",
+    "of": "de",
+    "listings": "listados",
+    "no_of_units": "Número de Unidades",
+    "type_of_project_label": "Tipo de Proyecto:",
+    "housing_type_label": "Tipo de Vivienda:"
+  },
+  "options": {
+    "all": "Todos",
+    "family": "Familiar",
+    "elderly": "Ancianos",
+    "foster_care_facility": "Instalación de Cuidado Temporal",
+    "homeless": "Sin Hogar",
+    "special_needs": "Necesidades Especiales",
+    "public": "Público",
+    "private": "Privado"
+  },
+  "footer": {
+    "help_and_support": "Ayuda y soporte",
+    "miami_dade_home": "Hogar de Miami-Dade",
+    "privacy_statement": "Declaración de privacidad",
+    "ada_notice": "Aviso de la ADA",
+    "disclaimer": "Descargo de responsabilidad",
+    "about_miami_dade": "Acerca de Miami-Dade",
+    "self_service": "Autoservicio",
+    "311_contact_center": "Centro de contacto 311",
+    "mobile_applications": "Aplicaciones móviles",
+    "open_data": "Datos abiertos",
+    "public_records": "Registros públicos",
+    "service_directory": "Directorio de servicios",
+    "stay_connected": "Mantente conectado",
+    "legal_ads_notices": "Avisos legales y avisos públicos",
+    "social_media_directory": "Directorio de redes sociales",
+    "watch_government_meetings": "Ver reuniones gubernamentales",
+    "county_calendar": "Calendario del condado",
+    "news_rss_feed": "Noticias RSS",
+    "email_disclaimer": "Según la ley de Florida, las direcciones de correo electrónico son registros públicos. Si no desea que se divulgue su dirección de correo electrónico en respuesta a una solicitud de registros públicos, no envíe correo electrónico a esta entidad. En su lugar, comuníquese con esta oficina por teléfono o por escrito.",
+    "all_rights_reserved": "Todos los derechos reservados.",
+    "feedback": "Comentario"
+  }
+}

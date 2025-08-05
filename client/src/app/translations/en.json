@@ -1,0 +1,75 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "listings": "Listings", 
+    "resources": "Resources",
+    "contact": "Contact",
+    "login": "Login",
+    "menu": "MENU"
+  },
+  "language": {
+    "translate": "Translate",
+    "english": "English",
+    "spanish": "Spanish",
+    "haitian_creole": "Haitian Creole"
+  },
+  "header": {
+    "miami_dade_county": "Miami-Dade County",
+    "311": "311",
+    "gov_meetings": "GovMeetings",
+    "calendar": "Calendar"
+  },
+  "filters": {
+    "zipcode": "Zipcode",
+    "district": "District",
+    "type_of_project": "Type of Project",
+    "housing_type": "Housing Type",
+    "reset": "Reset",
+    "search_by_filter": "Search by Filter",
+    "enter_zipcode": "Enter Zipcode Number",
+    "select_district": "Select District",
+    "select_option": "Select Option"
+  },
+  "listings": {
+    "showing": "Showing",
+    "of": "of",
+    "listings": "listings",
+    "no_of_units": "No. of Units",
+    "type_of_project_label": "Type of Project:",
+    "housing_type_label": "Housing Type:"
+  },
+  "options": {
+    "all": "All",
+    "family": "Family",
+    "elderly": "Elderly",
+    "foster_care_facility": "Foster Care Facility",
+    "homeless": "Homeless",
+    "special_needs": "Special Needs",
+    "public": "Public",
+    "private": "Private"
+  },
+  "footer": {
+    "help_and_support": "Help and Support",
+    "miami_dade_home": "Miami-Dade Home",
+    "privacy_statement": "Privacy Statement",
+    "ada_notice": "ADA Notice",
+    "disclaimer": "Disclaimer",
+    "about_miami_dade": "About Miami-Dade",
+    "self_service": "Self-Service",
+    "311_contact_center": "311 Contact Center",
+    "mobile_applications": "Mobile Applications",
+    "open_data": "Open Data",
+    "public_records": "Public Records",
+    "service_directory": "Service Directory",
+    "stay_connected": "Stay Connected",
+    "legal_ads_notices": "Legal Ads & Public Notices",
+    "social_media_directory": "Social Media Directory",
+    "watch_government_meetings": "Watch Government Meetings",
+    "county_calendar": "County Calendar",
+    "news_rss_feed": "News RSS Feed",
+    "email_disclaimer": "Under Florida law, e-mail addresses are public records. If you do not want your e-mail address released in response to a public records request, do not send electronic mail to this entity. Instead, contact this office by phone or in writing.",
+    "all_rights_reserved": "All rights reserved.",
+    "feedback": "Feedback"
+  }
+}

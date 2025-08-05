@@ -1,7 +1,11 @@
 "use client";
 import React from "react";
+import { useTranslation } from "../contexts/TranslationContext";
 
-const Footer = () => (
+const Footer = () => {
+  const { t } = useTranslation();
+  
+  return (
   <>
     <footer style={{ backgroundColor: '#28649b', color: 'white', paddingTop: 10, paddingBottom: 32 }}>
       <div className="container">
@@ -11,38 +15,38 @@ const Footer = () => (
             <div className="row" style={{ marginBottom: 0 }}>
               <div className="col s12 m4" style={{ paddingTop: 10, paddingBottom: 16 }}>
                 <h5 className="white-text" style={{ fontWeight: 700, fontSize: 19, marginBottom: 0}}>
-                  Help and Support
+                  {t('footer.help_and_support')}
                 </h5>
                 <ul style={{ fontSize: 12.9, lineHeight: 3 }}>
-                  <li><a href="#" className="white-text footer-link">Miami-Dade Home</a></li>
-                  <li><a href="#" className="white-text footer-link">Privacy Statement</a></li>
-                  <li><a href="#" className="white-text footer-link">ADA Notice</a></li>
-                  <li><a href="#" className="white-text footer-link">Disclaimer</a></li>
-                  <li><a href="#" className="white-text footer-link">About Miami-Dade</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.miami_dade_home')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.privacy_statement')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.ada_notice')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.disclaimer')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.about_miami_dade')}</a></li>
                 </ul>
               </div>
               <div className="col s12 m4" style={{ paddingTop: 10, paddingBottom: 16 }}>
                 <h5 className="white-text" style={{ fontWeight: 700,fontSize: 19, marginBottom: 0}}>
-                  Self-Service
+                  {t('footer.self_service')}
                 </h5>
                 <ul style={{ fontSize: 12.9, lineHeight: 3 }}>
-                  <li><a href="#" className="white-text footer-link">311 Contact Center</a></li>
-                  <li><a href="#" className="white-text footer-link">Mobile Applications</a></li>
-                  <li><a href="#" className="white-text footer-link">Open Data</a></li>
-                  <li><a href="#" className="white-text footer-link">Public Records</a></li>
-                  <li><a href="#" className="white-text footer-link">Service Directory</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.311_contact_center')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.mobile_applications')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.open_data')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.public_records')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.service_directory')}</a></li>
                 </ul>
               </div>
               <div className="col s12 m4" style={{ paddingTop: 10, paddingBottom: 16 }}>
                 <h5 className="white-text" style={{ fontWeight: 700,fontSize: 19, marginBottom: 0}}>
-                  Stay Connected
+                  {t('footer.stay_connected')}
                 </h5>
                 <ul style={{ fontSize: 12.9, lineHeight: 3 }}>
-                  <li><a href="#" className="white-text footer-link">Legal Ads &amp; Public Notices</a></li>
-                  <li><a href="#" className="white-text footer-link">Social Media Directory</a></li>
-                  <li><a href="#" className="white-text footer-link">Watch Government Meetings</a></li>
-                  <li><a href="#" className="white-text footer-link">County Calendar</a></li>
-                  <li><a href="#" className="white-text footer-link">News RSS Feed</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.legal_ads_notices')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.social_media_directory')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.watch_government_meetings')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.county_calendar')}</a></li>
+                  <li><a href="#" className="white-text footer-link">{t('footer.news_rss_feed')}</a></li>
                 </ul>
               </div>
             </div>
@@ -50,9 +54,7 @@ const Footer = () => (
             <div className="row" style={{ marginBottom: 0 }}>
               <div className="col s12" style={{ paddingTop: 10, paddingBottom: 24 }}>
                 <p className="white-text" style={{ fontSize: 12.9, marginBottom: 0 }}>
-                  Under Florida law, e-mail addresses are public records. If you do not want your e-mail address
-                  released in response to a public records request, do not send electronic mail to this entity.
-                  Instead, contact this office by phone or in writing.
+                  {t('footer.email_disclaimer')}
                 </p>
               </div>
             </div>
@@ -70,7 +72,7 @@ const Footer = () => (
               </a>
             </div>
             <div className="white-text" style={{ margin: '0 0 16px 0', fontSize: 12.9 }}>
-              © {new Date().getFullYear()} Miami-Dade County. All rights reserved.
+              © {new Date().getFullYear()} Miami-Dade County. {t('footer.all_rights_reserved')}
             </div>
             <img
               src="/award.jpg"
@@ -125,7 +127,7 @@ const Footer = () => (
                   className="blue-text text-darken-3"
                   style={{ fontWeight: 500, position: 'relative', fontSize: 16 }}
                 >
-                  Feedback
+                  {t('footer.feedback')}
                   <i
                     className="material-icons"
                     style={{
@@ -158,5 +160,6 @@ const Footer = () => (
     `}</style>
   </>
 );
+};
 
 export default Footer;

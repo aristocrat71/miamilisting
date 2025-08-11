@@ -254,37 +254,98 @@ const FilterPanel: React.FC = () => {
           padding: '0 4px',
           display: 'grid',
           gridTemplateColumns: viewMode === 'grid' ? 'repeat(3, 1fr)' : '1fr',
-          gap: '24px',
+          gap: '2px',
         }}
       >
         {currentListings.map((listing) => (
-          <div key={listing.id} className="card z-depth-1" style={{ display: viewMode === 'list' ? 'flex' : 'block', height: viewMode === 'list' ? '160px' : 'auto' }}>
+          <div key={listing.id} className="card z-depth-1" style={{ display: viewMode === 'list' ? 'flex' : 'block', height: viewMode === 'list' ? '108px' : 'auto' }}>
             {viewMode === 'list' ? (
               <>
-                <div style={{ flex: '0 0 200px' }}>
-                  <img src={listing.image} alt={listing.project} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ flex: '0 0 200px' }}>
+                <img
+                  src={listing.image}
+                  alt={listing.project}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+            
+              <div
+                style={{
+                  flex: 1,
+                  padding: '16px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start', // 🔹 Aligns top with image
+                  color: 'black'
+                }}
+              >
+                {/* Left Section */}
+                <div style={{ flex: '1 1 33%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                  <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>
+                    {listing.project}
+                  </h6>
+            
+                  {/* Address Row */}
+                  <p style={{ display: 'flex', alignItems: 'center', margin: 0, marginBottom: '4px' }}>
+                    <a
+                      href={`https://www.google.com/maps?q=${encodeURIComponent(listing.address + ', ' + listing.zipcode)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: 'inline-flex', alignItems: 'center', marginRight: '6px' }}
+                    >
+                      <span
+                        className="circle-icon"
+                        style={{ display: 'inline-flex', alignItems: 'center' }}
+                      >
+                        <svg
+                          role="presentation"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 384 512"
+                          style={{ width: '14px', height: '14px' }}
+                        >
+                          <path d="M172.268 501.67C26.97 291.031 0 269.413 
+                            0 192 0 85.961 85.961 0 192 0s192 
+                            85.961 192 192c0 77.413-26.97 99.031-172.268 
+                            309.67-9.535 13.774-29.93 13.773-39.464 
+                            0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80
+                            -80 35.817-80 80 35.817 80 80 80z"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                    <span>{listing.address}, {listing.zipcode}</span>
+                  </p>
+            
+                  {/* Phone Row */}
+                  <p style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+                    <span
+                      className="circle-icon"
+                      style={{ display: 'inline-flex', alignItems: 'center', marginRight: '6px' }}
+                    >
+                      <MdPhone style={{ width: '14px', height: '14px', verticalAlign: 'middle' }} />
+                    </span>
+                    <a
+                      href={`tel:${listing.phone}`}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      {listing.phone}
+                    </a>
+                  </p>
                 </div>
-                <div style={{ flex: 1, padding: '16px', display: 'flex', justifyContent: 'space-between', color: 'black' }}>
-                  {/* Left Section: Project, Address, Phone */}
-                  <div style={{ flex: '1 1 33%'}}>
-                    <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
-                    <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
-                    <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
-                  </div>
-                  {/* Center Section: District, No. of Units */}
-                  <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center', paddingTop: '7px' }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <p><strong>District:</strong> {listing.district}</p>
-                      <p><strong>{translatedContent['No. of Units'] || 'No. of Units'}:</strong> {listing.units}</p>
-                    </div>
-                  </div>
-                  {/* Right Section: Type of Project, Housing Type */}
-                  <div style={{ flex: '1 1 33%', textAlign: 'right', paddingTop: '7px' }}>
-                    <p><strong>{translatedContent['Type of Project:'] || 'Type of Project:'}</strong> {listing.projectType}</p>
-                    <p><strong>{translatedContent['Housing Type:'] || 'Housing Type:'}</strong> {listing.housingType}</p>
-                  </div>
+            
+                {/* Center Section */}
+                <div style={{ flex: '1 1 33%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'left' }}>
+                  <p><strong>District:</strong> {listing.district}</p>
+                  <p><strong>{translatedContent['No. of Units'] || 'No. of Units'}:</strong> {listing.units}</p>
                 </div>
-              </>
+            
+                {/* Right Section */}
+                <div style={{ flex: '1 1 33%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'right' }}>
+                  <p><strong>{translatedContent['Type of Project:'] || 'Type of Project:'}</strong> {listing.projectType}</p>
+                  <p><strong>{translatedContent['Housing Type:'] || 'Housing Type:'}</strong> {listing.housingType}</p>
+                </div>
+              </div>
+            </>            
             ) : (
               <>
                 <div className="card-image">
@@ -292,8 +353,49 @@ const FilterPanel: React.FC = () => {
                 </div>
                 <div className="card-content" style={{ color: 'black' }}>
                   <h6 style={{ fontWeight: 700, marginBottom: '4px' }}>{listing.project}</h6>
-                  <p><MdLocationOn style={{ verticalAlign: 'middle' }} /> {listing.address}, {listing.zipcode}</p>
-                  <p><MdPhone style={{ verticalAlign: 'middle' }} /> {listing.phone}</p>
+                  <p style={{ display: 'flex', alignItems: 'center', marginBottom: '4px' }}>
+                    <a
+                      href={`https://www.google.com/maps?q=${encodeURIComponent(listing.address + ', ' + listing.zipcode)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: 'inline-flex', alignItems: 'center', marginRight: '0px' }}
+                    >
+                      <span className="circle-icon" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                        <svg
+                          role="presentation"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 384 512"
+                          style={{ width: '14px', height: '14px' }}
+                        >
+                          <path d="M172.268 501.67C26.97 291.031 0 269.413 
+          0 192 0 85.961 85.961 0 192 0s192 
+          85.961 192 192c0 77.413-26.97 99.031-172.268 
+          309.67-9.535 13.774-29.93 13.773-39.464 
+          0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80
+          -80 35.817-80 80 35.817 80 80 80z"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                    <span>
+                      {listing.address}, {listing.zipcode}
+                    </span>
+                  </p>
+                  {/* Phone Row */}
+                  <p style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+                    <span
+                      className="circle-icon"
+                      style={{ display: 'inline-flex', alignItems: 'center', marginRight: '6px' }}
+                    >
+                      <MdPhone style={{ width: '14px', height: '14px', verticalAlign: 'middle' }} />
+                    </span>
+                    <a
+                      href={`tel:${listing.phone}`}
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                      {listing.phone}
+                    </a>
+                  </p>
                   <br />
                   <p><strong>District:</strong> {listing.district}</p>
                   <p><strong>{translatedContent['No. of Units'] || 'No. of Units'}:</strong> {listing.units}</p>

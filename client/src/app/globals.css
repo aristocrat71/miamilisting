@@ -256,3 +256,38 @@ nav ul a, nav .brand-logo {
   color: white !important;
 }
 
+.circle-icon {
+  background-color: #027abb; /* Exact blue */
+  border-radius: 50%;        /* Make it round */
+  display: flex;             /* Center content */
+  align-items: center;
+  justify-content: center;
+  height: 25px;               /* Exact size */
+  width: 25px;
+  min-width: 25px;
+  margin-right: 0.3em;
+}
+
+.circle-icon svg {
+  fill: white; /* White icon inside */
+  width: 14px;
+  height: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0;
+  padding: 0;
+}
+
+/* Optional: ensure bold text actually uses bold weight of Roboto */
+strong, b {
+  font-weight: 700;
+}
+
+

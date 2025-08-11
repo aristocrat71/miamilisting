@@ -165,3 +165,19 @@ a.secondary {
     filter: invert();
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0;
+  padding: 0;
+}
+
+/* Optional: ensure bold text actually uses bold weight of Roboto */
+strong, b {
+  font-weight: 700;
+}
